@@ -168,7 +168,12 @@ function updateTimerDisplay(label, seconds) {
 function start400s() {
   startIntervalTimer({
     reps: 6,
-    work: 90, // adjust per week
+    work: getEveningAdjustedWorkTime(90)
     rest: 90
   });
+}
+
+function getEveningAdjustedWorkTime(baseSeconds) {
+  const hour = new Date().getHours();
+  return hour >= 17 ? baseSeconds + 3 : baseSeconds;
 }
