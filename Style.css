@@ -1,0 +1,36 @@
+body {
+  background: #1a1a2e;
+  color: #fff;
+  font-family: Arial, sans-serif;
+}
+
+h1 {
+  text-align: center;
+  margin-top: 20px;
+}
+
+#calendar {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 10px;
+  padding: 20px;
+}
+
+.day {
+  background: #16213e;
+  padding: 15px;
+  border-radius: 6px;
+  text-align: center;
+}
+
+.checkbox {
+  margin-top: 10px;
+}
+
+button {
+  background: #0f3460;
+  border: none;
+  padding: 10px;
+  color: #fff;
+  border-radius: 4px;
+}
