@@ -1,20 +1,21 @@
-<!doctype html>
-<html>
+<!DOCTYPE html>
+<html lang="en">
 <head>
   <meta charset="UTF-8">
   <title>2km Sub-8 App</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
+
   <h1>2km Sub-8 Training Calendar</h1>
   <div id="calendar"></div>
-  <div id="session"></div>
+
+  <div id="timer">
+    <h2 id="timerLabel">Ready</h2>
+    <h1 id="timerTime">00:00</h1>
+    <button onclick="start400s()">Start 400m Intervals</button>
+  </div>
+
   <script src="app.js"></script>
 </body>
 </html>
-<div id="timer">
-  <h2 id="timerLabel">Ready</h2>
-  <h1 id="timerTime">00:00</h1>
-</div>
-
-<button onclick="start400s()">Start 400m Intervals</button>
