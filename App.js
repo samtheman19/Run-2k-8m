@@ -157,4 +157,18 @@ function runRestPhase(work, rest, reps) {
   }, 1000);
 }
 
+function updateTimerDisplay(label, seconds) {
+  document.getElementById("timerLabel").innerText = label;
+  document.getElementById("timerTime").innerText =
+    Math.floor(seconds / 60).toString().padStart(2, "0") +
+    ":" +
+    (seconds % 60).toString().padStart(2, "0");
+}
 
+function start400s() {
+  startIntervalTimer({
+    reps: 6,
+    work: 90, // adjust per week
+    rest: 90
+  });
+}
