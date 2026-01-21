@@ -100,3 +100,61 @@ function endBeep() {
   beep(600, 0.2);
   setTimeout(() => beep(600, 0.2), 200);
 }
+
+let timerInterval;
+let currentRep = 0;
+
+function startIntervalTimer({
+  reps = 6,
+  work = 90,   // seconds
+  rest = 90    // seconds
+}) {
+  initAudio(); // unlock audio
+  currentRep = 1;
+  runWorkPhase(work, rest, reps);
+}
+
+function runWorkPhase(work, rest, reps) {
+  let timeLeft = work;
+  beep(1000, 0.2); // START BEEP
+
+  timerInterval = setInterval(() => {
+    updateTimerDisplay(`Rep ${currentRep} — RUN`, timeLeft);
+
+    if (timeLeft <= 3 && timeLeft > 0) {
+      beep(1200, 0.1); // 3-2-1 beeps
+    }
+
+    if (timeLeft <= 0) {
+      clearInterval(timerInterval);
+      endBeep();
+
+      if (currentRep < reps) {
+        runRestPhase(work, rest, reps);
+      } else {
+        updateTimerDisplay("Session Complete", 0);
+      }
+    }
+
+    timeLeft--;
+  }, 1000);
+}
+
+function runRestPhase(work, rest, reps) {
+  let timeLeft = rest;
+  beep(500, 0.2); // REST START
+
+  timerInterval = setInterval(() => {
+    updateTimerDisplay(`Rep ${currentRep} — REST`, timeLeft);
+
+    if (timeLeft <= 0) {
+      clearInterval(timerInterval);
+      currentRep++;
+      runWorkPhase(work, rest, reps);
+    }
+
+    timeLeft--;
+  }, 1000);
+}
+
+
